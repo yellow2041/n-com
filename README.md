@@ -16,3 +16,7 @@
 #### parallel route
 - 한페이지에 2개의 화면을 동시에 띄우고싶을 때 사용
 - 폴더명을 `@modal` 이런식으로 만들면 됨
+##### default.tsx
+- 모달의 기본값
+- 주소가 localhost:3001일 떄는 children -> page.tsx, modal->@modal/default.tsx
+- 주소가 localhost:3001/i/flow/login 일 때는 children->i/flow/login/page.tsx, modal->@modal/i/flow/login/page.tsx
