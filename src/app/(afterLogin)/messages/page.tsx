@@ -1,3 +1,3 @@
-export default function AfterLoginLayout({ children }) {
-  return <div>After login layout{children}</div>;
+export default function Message({ children }) {
+  return <div>message</div>;
 }

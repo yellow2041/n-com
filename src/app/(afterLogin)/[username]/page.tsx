@@ -1,3 +1,37 @@
-export default function AfterLoginLayout({ children }) {
-  return <div>After login layout{children}</div>;
+import style from "@/app/(afterLogin)/[username]/profile.module.css";
+import Post from "../_component/Post";
+import BackButton from "../_component/BackButton";
+
+export default function Profile({ children }) {
+  const user = {
+    id: "nelljk_guitar",
+    image: "/nelljk_1.jpg",
+    nickname: "이재경",
+  };
+  return (
+    <main className={style.main}>
+      <div className={style.header}>
+        <BackButton />
+        <h3 className={style.headerTitle}>{user.nickname}</h3>
+      </div>
+      <div className={style.userZone}>
+        <div className={style.userImage}>
+          <img src={user.image} alt={user.id} />
+        </div>
+        <div className={style.userName}>
+          <div>{user.nickname}</div>
+          <div>@{user.id}</div>
+        </div>
+        <button className={style.followButton}>팔로우</button>
+      </div>
+      <div>
+        <Post />
+        <Post />
+        <Post />
+        <Post />
+        <Post />
+        <Post />
+      </div>
+    </main>
+  );
 }
