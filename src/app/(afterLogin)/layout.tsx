@@ -38,10 +38,7 @@ export default function AfterLoginLayout({ children, modal }: Props) {
       </header>
       <div className={style.rightSectionWrapper}>
         <div className={style.rightSectionInner}>
-          <main className={style.main}>
-            {children}
-            {modal}
-          </main>
+          <main className={style.main}>{children}</main>
           <section className={style.rightSection}>
             <RightSearchZone />
             <TrendSection />
@@ -54,6 +51,7 @@ export default function AfterLoginLayout({ children, modal }: Props) {
           </section>
         </div>
       </div>
+      {modal}
     </div>
   );
 }

@@ -1,14 +1,21 @@
-import Link from "next/link";
 import style from "./post.module.css";
 import dayjs from "dayjs";
 import relativeTime from "dayjs/plugin/relativeTime";
 import ActionButtons from "./ActionButtons";
+import PostArticle from "./PostArticle";
+import PostImages from "./PostImages";
+import Link from "next/link";
 
 dayjs.locale("ko");
 dayjs.extend(relativeTime);
 
-export default function Post() {
+type Props = {
+  noImage?: boolean;
+};
+
+export default function Post({ noImage }: Props) {
   const target = {
+    postId: 1,
     User: {
       id: "nelljk_guitar",
       image: "/nelljk_1.jpg",
@@ -16,10 +23,14 @@ export default function Post() {
     },
     content: "이재경 잘생겼다",
     createdAt: new Date(),
-    Images: [],
+    Images: [
+      { imageId: 1, link: "/nell_2.jpg" },
+      { imageId: 2, link: "/nell_1.jpg" },
+      { imageId: 3, link: "/nell_3.jpg" },
+    ],
   };
   return (
-    <article className={style.post}>
+    <PostArticle post={target}>
       <div className={style.postWrapper}>
         <div className={style.postUserSection}>
           <Link href={`/${target.User.id}`} className={style.postUserImage}>
@@ -40,10 +51,12 @@ export default function Post() {
             </span>
           </div>
           <div>{target.content}</div>
-          <div className={style.postImageSection}></div>
+          <div>
+            <PostImages post={target} />
+          </div>
           <ActionButtons />
         </div>
       </div>
-    </article>
+    </PostArticle>
   );
 }
